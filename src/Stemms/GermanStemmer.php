@@ -57,7 +57,8 @@ class GermanStemmer implements StemmerInterface
     private static $st_ending = array('b','d','f','g','h','k','l','m','n','t');
 
 
-    public static function stem($word) {
+    public static function stem($word)
+    {
         $word = strtolower($word);
 
         if (!isset(self::$cache[$word])) {
@@ -68,7 +69,8 @@ class GermanStemmer implements StemmerInterface
         return self::$cache[$word];
     }
 
-    private static function getStem($word) {
+    private static function getStem($word)
+    {
         $word = self::step0a($word);
         $word = self::step1($word);
         $word = self::step2($word);
@@ -81,11 +83,12 @@ class GermanStemmer implements StemmerInterface
     /**
     *  replaces to protect some characters
     */
-    private static function step0a($word) {
-        $word = str_replace(array('ä','ö','ü'),array('A','O','U'),$word);
-        $vstr = implode('',self::$vowels);
-        $word = preg_replace('#(['.$vstr.'])u(['.$vstr.'])#', '$1Z$2',$word);
-        $word = preg_replace('#(['.$vstr.'])y(['.$vstr.'])#', '$1Y$2',$word);
+    private static function step0a($word)
+    {
+        $word = str_replace(array('ä','ö','ü'), array('A','O','U'), $word);
+        $vstr = implode('', self::$vowels);
+        $word = preg_replace('#(['.$vstr.'])u(['.$vstr.'])#', '$1Z$2', $word);
+        $word = preg_replace('#(['.$vstr.'])y(['.$vstr.'])#', '$1Y$2', $word);
 
         return $word;
     }
@@ -93,14 +96,16 @@ class GermanStemmer implements StemmerInterface
     /**
     *   Undo the initial replaces
     */
-    private static function step0b($word) {
-        $word = str_replace(array('A','O','U','Y','Z'),array('ä','ö','ü','y','u'),$word);
+    private static function step0b($word)
+    {
+        $word = str_replace(array('A','O','U','Y','Z'), array('ä','ö','ü','y','u'), $word);
 
         return $word;
     }
 
-    private static function step1($word) {
-        $word = str_replace('ß','ss',$word);
+    private static function step1($word)
+    {
+        $word = str_replace('ß', 'ss', $word);
 
         self::getR($word);
 
@@ -108,82 +113,84 @@ class GermanStemmer implements StemmerInterface
 
         $arr = array('em','ern','er');
         foreach ($arr as $s) {
-            self::$R1 = preg_replace('#'.$s.'$#','',self::$R1,-1,$replaceCount);
+            self::$R1 = preg_replace('#'.$s.'$#', '', self::$R1, -1, $replaceCount);
             if ($replaceCount > 0) {
-                $word = preg_replace('#'.$s.'$#','',$word);
+                $word = preg_replace('#'.$s.'$#', '', $word);
             }
         }
 
         $arr = array('en','es','e');
         foreach ($arr as $s) {
-            self::$R1 = preg_replace('#'.$s.'$#','',self::$R1,-1,$replaceCount);
+            self::$R1 = preg_replace('#'.$s.'$#', '', self::$R1, -1, $replaceCount);
             if ($replaceCount > 0) {
-                $word = preg_replace('#'.$s.'$#','',$word);
+                $word = preg_replace('#'.$s.'$#', '', $word);
                 $word = preg_replace('#niss$#', 'nis', $word);
             }
         }
 
-        $word = preg_replace('/(['.implode('',self::$s_ending).'])s$/','$1',$word);
+        $word = preg_replace('/(['.implode('', self::$s_ending).'])s$/', '$1', $word);
 
         return $word;
     }
 
-    private static function step2($word) {
+    private static function step2($word)
+    {
         self::getR($word);
 
         $replaceCount = 0;
 
         $arr = array('est','er','en');
         foreach ($arr as $s) {
-            self::$R1 = preg_replace('#'.$s.'$#','',self::$R1,-1,$replaceCount);
+            self::$R1 = preg_replace('#'.$s.'$#', '', self::$R1, -1, $replaceCount);
             if ($replaceCount > 0) {
-                $word = preg_replace('#'.$s.'$#','',$word);
+                $word = preg_replace('#'.$s.'$#', '', $word);
             }
         }
 
-        if (strpos(self::$R1,'st') !== FALSE) {
-            self::$R1 = preg_replace('#st$#','',self::$R1);
-            $word = preg_replace('#(...['.implode('',self::$st_ending).'])st$#','$1',$word);
+        if (strpos(self::$R1, 'st') !== false) {
+            self::$R1 = preg_replace('#st$#', '', self::$R1);
+            $word = preg_replace('#(...['.implode('', self::$st_ending).'])st$#', '$1', $word);
         }
 
         return $word;
     }
 
-    private static function step3($word) {
+    private static function step3($word)
+    {
         self::getR($word);
 
         $replaceCount = 0;
 
         $arr = array('end', 'ung');
         foreach ($arr as $s) {
-            if (preg_match('#'.$s.'$#',self::$R2)) {
-                $word = preg_replace('#([^e])'.$s.'$#','$1',$word, -1, $replaceCount);
+            if (preg_match('#'.$s.'$#', self::$R2)) {
+                $word = preg_replace('#([^e])'.$s.'$#', '$1', $word, -1, $replaceCount);
                 if ($replaceCount > 0) {
-                    self::$R2 = preg_replace('#'.$s.'$#','',self::$R2,-1,$replaceCount);
+                    self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
                 }
             }
         }
 
         $arr = array('isch', 'ik', 'ig');
         foreach ($arr as $s) {
-            if (preg_match('#'.$s.'$#',self::$R2)) {
-                $word = preg_replace('#([^e])'.$s.'$#','$1',$word, -1, $replaceCount);
+            if (preg_match('#'.$s.'$#', self::$R2)) {
+                $word = preg_replace('#([^e])'.$s.'$#', '$1', $word, -1, $replaceCount);
                 if ($replaceCount > 0) {
-                    self::$R2 = preg_replace('#'.$s.'$#','',self::$R2);
+                    self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2);
                 }
             }
         }
 
         $arr = array('lich', 'heit');
         foreach ($arr as $s) {
-            self::$R2 = preg_replace('#'.$s.'$#','',self::$R2,-1,$replaceCount);
+            self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
             if ($replaceCount > 0) {
-                $word = preg_replace('#'.$s.'$#','',$word);
+                $word = preg_replace('#'.$s.'$#', '', $word);
             } else {
-                if (preg_match('#'.$s.'$#',self::$R1)) {
-                    $word = preg_replace('#(er|en)'.$s.'$#','$1',$word, -1, $replaceCount);
+                if (preg_match('#'.$s.'$#', self::$R1)) {
+                    $word = preg_replace('#(er|en)'.$s.'$#', '$1', $word, -1, $replaceCount);
                     if ($replaceCount > 0) {
-                        self::$R1 = preg_replace('#'.$s.'$#','',self::$R1);
+                        self::$R1 = preg_replace('#'.$s.'$#', '', self::$R1);
                     }
                 }
             }
@@ -191,9 +198,9 @@ class GermanStemmer implements StemmerInterface
 
         $arr = array('keit');
         foreach ($arr as $s) {
-            self::$R2 = preg_replace('#'.$s.'$#','',self::$R2,-1,$replaceCount);
+            self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
             if ($replaceCount > 0) {
-                $word = preg_replace('#'.$s.'$#','',$word);
+                $word = preg_replace('#'.$s.'$#', '', $word);
             }
         }
 
@@ -203,16 +210,17 @@ class GermanStemmer implements StemmerInterface
     /**
     * Find R1 and R2
     */
-    private static function getR($word) {
+    private static function getR($word)
+    {
         $string = str_split($word);
         $arrV = array_intersect($string, self::$vowels);
 
-        self::$R1Pos = NULL;
-        self::$R2Pos = NULL;
+        self::$R1Pos = null;
+        self::$R2Pos = null;
 
         // find R1/R2 positions
         for ($i=0; $i<count($string)-1; $i++) {
-            if(isset($arrV[$i]) && !isset($arrV[$i+1]) && self::$R1Pos === NULL) {
+            if (isset($arrV[$i]) && !isset($arrV[$i+1]) && self::$R1Pos === null) {
                 self::$R1Pos = $i+2;
             } elseif (isset($arrV[$i]) && !isset($arrV[$i+1])  && self::$R1Pos) {
                 self::$R2Pos = $i+2;
@@ -220,10 +228,10 @@ class GermanStemmer implements StemmerInterface
             }
         }
 
-        if(self::$R1Pos!=NULL) {
+        if (self::$R1Pos!=null) {
             self::$R1 = substr($word, self::$R1Pos);
         }
-        if(self::$R2Pos!=NULL) {
+        if (self::$R2Pos!=null) {
             self::$R2 = substr($word, self::$R2Pos);
         }
     }

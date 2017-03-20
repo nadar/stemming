@@ -4,7 +4,7 @@ namespace Nadar\Stemming;
 
 /**
  * Stemm Words or Phrares.
- * 
+ *
  * @author Basil Suter <basil@nadar.io>
  */
 class Stemm
@@ -16,9 +16,9 @@ class Stemm
     
     /**
      * Stem a word.
-     * 
+     *
      * If the language could not be found the world will returned.
-     * 
+     *
      * @param string $word The word to stem e.g. `drinking`
      * @param string $language The language to stem with e.g. `de`,`en`
      * @return string The stemmed word, if language not found original input returned.

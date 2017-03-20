@@ -3,6 +3,7 @@
     "type": "library",
     "description": "Stemming by Language",
     "keywords": ["php", "stemming", "stemmer"],
+    "license": "MIT",
     "homepage": "https://github.com/nadar/stemming",
     "authors": [
         {

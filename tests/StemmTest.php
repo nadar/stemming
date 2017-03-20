@@ -2,7 +2,6 @@
 
 namespace Nadar\Stemming\Tests;
 
-
 use Nadar\Stemming\Stemm;
 use PHPUnit\Framework\TestCase;
 

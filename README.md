@@ -20,3 +20,17 @@ If your provided language could not be found, the original word will be returned
 
 + German Stemming: https://github.com/arisro/german-stemmer (Copyright (c) 2013 Aris Buzachis (buzachis.aris@gmail.com))
 + English Stemming: https://tartarus.org/martin/PorterStemmer/php.txt (Copyright (c) 2005 Richard Heyes (http://www.phpguru.org/))
+
+## Testing and PR
+
+In order to test the libray run:
+
+```php
+./vendor/bin/phpunit tests
+```
+
+in order to psr2 fix your code run:
+
+```php
+./vendor/bin/php-cs-fixer fix src/
+```
