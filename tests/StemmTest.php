@@ -12,11 +12,15 @@ class StemmTest extends TestCase
     {
         $this->assertSame('trink', Stemm::stem('trinken', 'de'));
         $this->assertSame('trink', Stemm::stem('trinken', 'ch'));
+        
+        $this->assertSame('ich hab ein trinkend mensch geseh', Stemm::stemPhrase('Ich habe einen trinkenden Menschen gesehen', 'de'));
     }
     
     public function testEnglishStemm()
     {
         $this->assertSame('drink', Stemm::stem('drinking', 'en'));
         $this->assertSame('drink', Stemm::stem('drinking', 'gb'));
+        
+        $this->assertSame("I saw a drink gui", Stemm::stemPhrase('I saw a drinking guy', 'en'));
     }
 }

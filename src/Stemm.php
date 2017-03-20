@@ -2,6 +2,11 @@
 
 namespace Nadar\Stemming;
 
+/**
+ * Stemm Words or Phrares.
+ * 
+ * @author Basil Suter <basil@nadar.io>
+ */
 class Stemm
 {
     protected static $classMap = [
@@ -9,6 +14,15 @@ class Stemm
         '\\Nadar\\Stemming\\Stemms\\EnglishStemmer' => ['en', 'gb'],
     ];
     
+    /**
+     * Stem a word.
+     * 
+     * If the language could not be found the world will returned.
+     * 
+     * @param string $word The word to stem e.g. `drinking`
+     * @param string $language The language to stem with e.g. `de`,`en`
+     * @return string The stemmed word, if language not found original input returned.
+     */
     public static function stem($word, $language)
     {
         foreach (static::$classMap as $stemmer => $languages) {
@@ -18,5 +32,24 @@ class Stemm
         }
         
         return $word;
+    }
+    
+    /**
+     * Stem a phrase by its words.
+     *
+     * If the language could not be found the world will returned.
+     *
+     * @param string $phares The phares to stem e.g. `A drinking drinker`
+     * @param string $language The language to stem with e.g. `de`,`en`
+     * @return string The stemmed word, if language not found original input returned.
+     */
+    public static function stemPhrase($phares, $language)
+    {
+        $words = [];
+        foreach (explode(" ", $phares) as $word) {
+            $words[] = static::stem($word, $language);
+        }
+        
+        return implode(" ", $words);
     }
 }
