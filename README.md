@@ -14,6 +14,8 @@ $stemmed =  \Nadar\Stemming\Stem::word('drinking', 'en');
 echo $stemmed; // output: "drink"
 ```
 
+If your provided language could not be found, the original word will be returned.
+
 ## Librarys Used:
 
 + German Stemming: https://github.com/arisro/german-stemmer (Copyright (c) 2013 Aris Buzachis (buzachis.aris@gmail.com))
