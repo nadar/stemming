@@ -1,0 +1,28 @@
+{
+    "name": "nadar/stemming",
+    "type": "library",
+    "description": "Stemming by Language",
+    "keywords": ["php", "stemming", "stemmer"],
+    "homepage": "https://github.com/nadar/stemming",
+    "authors": [
+        {
+            "name": "Basil Suter",
+            "homepage": "https://github.com/nadar",
+            "role": "Creator"
+        }
+    ],
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nadar\\Stemming\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nadar\\Stemming\\Tests\\" : "test"
+        }
+    }
+}
