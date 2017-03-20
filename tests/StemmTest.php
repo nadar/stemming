@@ -7,6 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class StemmTest extends TestCase
 {
+    public function testBaseStemm()
+    {
+        $this->assertSame('foobar', Stemm::stem('foobar', null));
+        $this->assertSame('foobar', Stemm::stem('foobar', 'ch-ch'));
+    }
+    
     public function testGermanStemm()
     {
         $this->assertSame('trink', Stemm::stem('trinken', 'de'));
