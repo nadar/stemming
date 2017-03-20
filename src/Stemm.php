@@ -25,6 +25,10 @@ class Stemm
      */
     public static function stem($word, $language)
     {
+        if (empty($language)) {
+            return $word;
+        }
+        
         foreach (static::$classMap as $stemmer => $languages) {
             if (in_array($language, $languages)) {
                 return $stemmer::stem($word);
