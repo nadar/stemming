@@ -1,5 +1,8 @@
 # PHP Stemming Collection
 
+[![Latest Stable Version](https://poser.pugx.org/nadar/stemming/v/stable)](https://packagist.org/packages/nadar/stemming)
+[![Total Downloads](https://poser.pugx.org/nadar/stemming/downloads)](https://packagist.org/packages/nadar/stemming)
+
 The main purpose of this repo is to unify different stemming components based on its language.
 
 ## Installation
