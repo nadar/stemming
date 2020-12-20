@@ -393,7 +393,7 @@ class PorterStemmer
     {
         $c = self::$regex_consonant;
 
-        return preg_match("#$c{2}$#", $str, $matches) and $matches[0]{0} == $matches[0]{1};
+        return preg_match("#$c{2}$#", $str, $matches) and $matches[0][0] == $matches[0][1];
     }
 
 
@@ -410,8 +410,8 @@ class PorterStemmer
 
         return     preg_match("#($c$v$c)$#", $str, $matches)
                and strlen($matches[1]) == 3
-               and $matches[1]{2} != 'w'
-               and $matches[1]{2} != 'x'
-               and $matches[1]{2} != 'y';
+               and $matches[1][2] != 'w'
+               and $matches[1][2] != 'x'
+               and $matches[1][2] != 'y';
     }
 }
