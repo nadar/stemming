@@ -2,11 +2,25 @@
 
 namespace Nadar\Stemming\Tests;
 
+use luya\base\Boot;
+use luya\testsuite\cases\BaseTestSuite;
 use Nadar\Stemming\Stemm;
-use PHPUnit\Framework\TestCase;
 
-class StemmTest extends TestCase
+class StemmTest extends BaseTestSuite
 {
+    public function getConfigArray()
+    {
+        return [
+            'id' => 'mytestapp',
+            'basePath' => dirname(__DIR__),
+        ];
+    }
+
+    public function bootApplication(Boot $boot)
+    {
+        
+    }
+
     public function testBaseStemm()
     {
         $this->assertSame('foobar', Stemm::stem('foobar', null));
