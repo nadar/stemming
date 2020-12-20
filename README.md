@@ -1,5 +1,6 @@
 # PHP Stemming Collection
 
+![Tests](https://github.com/nadar/stemming/workflows/Tests/badge.svg)
 [![Latest Stable Version](https://poser.pugx.org/nadar/stemming/v/stable)](https://packagist.org/packages/nadar/stemming)
 [![Total Downloads](https://poser.pugx.org/nadar/stemming/downloads)](https://packagist.org/packages/nadar/stemming)
 

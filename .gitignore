@@ -3,3 +3,5 @@
 /.project
 /vendor/
 /.php_cs.cache
+composer.lock
+luya
