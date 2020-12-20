@@ -13,8 +13,7 @@
         }
     ],
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "phpunit/phpunit": "^6.0"
+        "luyadev/luya-testsuite": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -25,5 +24,16 @@
         "psr-4": {
             "Nadar\\Stemming\\Tests\\" : "test"
         }
-    }
+    },
+    "config": {
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
