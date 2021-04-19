@@ -22,7 +22,7 @@ Using the stemmer for your desired language:
 <?php
 include 'vendor/autoload.php';
 
-$stemmed = \Nadar\Stemming\Stem::stem('drinking', 'en');
+$stemmed = \Nadar\Stemming\Stemm::stem('drinking', 'en');
 
 echo $stemmed; // output: "drink"
 ```
@@ -32,7 +32,7 @@ If your provided language could not be found, the original word will be returned
 You can also stem a whole phares:
 
 ```php
-echo \Nadar\Stemming\Stem::stemPhrase('I am playing drums', 'en');
+echo \Nadar\Stemming\Stemm::stemPhrase('I am playing drums', 'en');
 ```
 
 ## Librarys Used:
