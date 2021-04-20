@@ -29,7 +29,7 @@ echo $stemmed; // output: "drink"
 
 If your provided language could not be found, the original word will be returned.
 
-You can also stem a whole phares:
+You can also stem a whole phrase:
 
 ```php
 echo \Nadar\Stemming\Stem::stemPhrase('I am playing drums', 'en');
