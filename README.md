@@ -35,6 +35,10 @@ You can also stem a whole phrase:
 echo \Nadar\Stemming\Stemm::stemPhrase('I am playing drums', 'en');
 ```
 
+## Ignore
+
+Certain words are on the ignore list, valid for all languages, see Stemm::$ignore. You can adjust that list with `Stemm::$ignore = ['foo', 'bar']`.
+
 ## Librarys Used:
 
 + German Stemming: https://github.com/arisro/german-stemmer (Copyright (c) 2013 Aris Buzachis (buzachis.aris@gmail.com))
