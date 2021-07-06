@@ -21,6 +21,15 @@ class StemmTest extends BaseTestSuite
         
     }
 
+    public function testIgnore()
+    {
+        $this->assertTrue(Stemm::isIgnored('bus'));
+        $this->assertTrue(Stemm::isIgnored('BUS'));
+        Stemm::$ignore = ['FOO'];
+        $this->assertFalse(Stemm::isIgnored('BUS'));
+        $this->assertTrue(Stemm::isIgnored('foO'));
+    }
+
     public function testBaseStemm()
     {
         $this->assertSame('foobar', Stemm::stem('foobar', null));

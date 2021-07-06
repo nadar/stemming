@@ -3,7 +3,7 @@
 namespace Nadar\Stemming;
 
 /**
- * Stemm Words or Phrares.
+ * Stemm Words or Phrase.
  *
  * @author Basil Suter <basil@nadar.io>
  */
@@ -13,7 +13,27 @@ class Stemm
         '\\Nadar\\Stemming\\Stemms\\GermanStemmer' => ['de', 'ch'],
         '\\Nadar\\Stemming\\Stemms\\EnglishStemmer' => ['en', 'gb'],
     ];
-    
+
+    /**
+     * @var array A list of words which should be ignored. This list is universal for all languages.
+     */
+    public static $ignore = ["physics", "mathematics", "geography", "bus"];
+
+    /**
+     * Check whether a given word is in the ignored list
+     *
+     * @param string $word
+     * @return boolean
+     */
+    public static function isIgnored($word)
+    {
+        $list = array_map(function($item) {
+            return strtolower($item);
+        }, self::$ignore);
+
+        return in_array(strtolower($word), $list);
+    }
+
     /**
      * Stem a word.
      *
@@ -26,6 +46,10 @@ class Stemm
     public static function stem($word, $language)
     {
         if (empty($language)) {
+            return $word;
+        }
+
+        if (self::isIgnored($word)) {
             return $word;
         }
         
