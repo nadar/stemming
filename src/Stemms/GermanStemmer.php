@@ -166,7 +166,7 @@ class GermanStemmer implements StemmerInterface
             if (preg_match('#'.$s.'$#', self::$R2)) {
                 $word = preg_replace('#([^e])'.$s.'$#', '$1', $word, -1, $replaceCount);
                 if ($replaceCount > 0) {
-                    self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
+                    self::$R2 = (string) preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
                 }
             }
         }
@@ -176,14 +176,14 @@ class GermanStemmer implements StemmerInterface
             if (preg_match('#'.$s.'$#', self::$R2)) {
                 $word = preg_replace('#([^e])'.$s.'$#', '$1', $word, -1, $replaceCount);
                 if ($replaceCount > 0) {
-                    self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2);
+                    self::$R2 = (string) preg_replace('#'.$s.'$#', '', self::$R2);
                 }
             }
         }
 
         $arr = array('lich', 'heit');
         foreach ($arr as $s) {
-            self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
+            self::$R2 = (string) preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
             if ($replaceCount > 0) {
                 $word = preg_replace('#'.$s.'$#', '', $word);
             } else {
@@ -198,7 +198,7 @@ class GermanStemmer implements StemmerInterface
 
         $arr = array('keit');
         foreach ($arr as $s) {
-            self::$R2 = preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
+            self::$R2 = (string) preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
             if ($replaceCount > 0) {
                 $word = preg_replace('#'.$s.'$#', '', $word);
             }
@@ -232,7 +232,7 @@ class GermanStemmer implements StemmerInterface
             self::$R1 = substr($word, self::$R1Pos);
         }
         if (self::$R2Pos!=null) {
-            self::$R2 = substr($word, self::$R2Pos);
+            self::$R2 = (string) substr($word, self::$R2Pos);
         }
     }
 }
