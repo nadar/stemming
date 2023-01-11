@@ -1,39 +1,47 @@
 {
-    "name": "nadar/stemming",
-    "type": "library",
-    "description": "Stemming by Language",
-    "keywords": ["php", "stemming", "stemmer"],
-    "license": "MIT",
-    "homepage": "https://github.com/nadar/stemming",
-    "authors": [
-        {
-            "name": "Basil Suter",
-            "homepage": "https://github.com/nadar",
-            "role": "Creator"
-        }
-    ],
-    "require-dev": {
-        "luyadev/luya-testsuite": "^2.0"
+  "name": "nadar/stemming",
+  "type": "library",
+  "description": "Stemming by Language",
+  "keywords": [
+    "php",
+    "stemming",
+    "stemmer"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nadar/stemming",
+  "authors": [
+    {
+      "name": "Basil Suter",
+      "homepage": "https://github.com/nadar",
+      "role": "Creator"
+    }
+  ],
+  "require-dev": {
+    "luyadev/luya-testsuite": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nadar\\Stemming\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nadar\\Stemming\\Tests\\": "test"
+    }
+  },
+  "config": {
+    "fxp-asset": {
+      "enabled": false
     },
-    "autoload": {
-        "psr-4": {
-            "Nadar\\Stemming\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Nadar\\Stemming\\Tests\\" : "test"
-        }
-    },
-    "config": {
-        "fxp-asset": {
-            "enabled": false
-        }
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ]
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "luyadev/luya-composer": true
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
