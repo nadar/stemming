@@ -31,7 +31,7 @@ class Stemm
             return strtolower($item);
         }, self::$ignore);
 
-        return in_array(strtolower($word), $list);
+        return in_array(strtolower((string) $word), $list);
     }
 
     /**
@@ -55,7 +55,7 @@ class Stemm
         
         foreach (static::$classMap as $stemmer => $languages) {
             if (in_array($language, $languages)) {
-                return $stemmer::stem($word);
+                return $stemmer::stem((string) $word);
             }
         }
         
