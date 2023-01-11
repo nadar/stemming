@@ -163,7 +163,7 @@ class GermanStemmer implements StemmerInterface
 
         $arr = array('end', 'ung');
         foreach ($arr as $s) {
-            if (preg_match('#'.$s.'$#', self::$R2)) {
+            if (preg_match('#'.$s.'$#', (string) self::$R2)) {
                 $word = preg_replace('#([^e])'.$s.'$#', '$1', $word, -1, $replaceCount);
                 if ($replaceCount > 0) {
                     self::$R2 = (string) preg_replace('#'.$s.'$#', '', self::$R2, -1, $replaceCount);
@@ -173,7 +173,7 @@ class GermanStemmer implements StemmerInterface
 
         $arr = array('isch', 'ik', 'ig');
         foreach ($arr as $s) {
-            if (preg_match('#'.$s.'$#', self::$R2)) {
+            if (preg_match('#'.$s.'$#', (string) self::$R2)) {
                 $word = preg_replace('#([^e])'.$s.'$#', '$1', $word, -1, $replaceCount);
                 if ($replaceCount > 0) {
                     self::$R2 = (string) preg_replace('#'.$s.'$#', '', self::$R2);
@@ -187,7 +187,7 @@ class GermanStemmer implements StemmerInterface
             if ($replaceCount > 0) {
                 $word = preg_replace('#'.$s.'$#', '', $word);
             } else {
-                if (preg_match('#'.$s.'$#', self::$R1)) {
+                if (preg_match('#'.$s.'$#', (string) self::$R1)) {
                     $word = preg_replace('#(er|en)'.$s.'$#', '$1', $word, -1, $replaceCount);
                     if ($replaceCount > 0) {
                         self::$R1 = preg_replace('#'.$s.'$#', '', self::$R1);
