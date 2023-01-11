@@ -51,4 +51,12 @@ class StemmTest extends BaseTestSuite
         
         $this->assertSame("I saw a drink gui", Stemm::stemPhrase('I saw a drinking guy', 'en'));
     }
+
+    public function testEmpty()
+    {
+        $this->assertSame('', Stemm::stem(null, 'de'));
+        $this->assertSame('', Stemm::stem('', 'de'));
+        $this->assertSame('ntliche führung: ich höre w', Stemm::stem('ntliche Führung: Ich höre w', 'de'));
+        $this->assertSame('ntlich führung: ich hör w', Stemm::stemPhrase('ntliche Führung: Ich höre w', 'de'));
+    }
 }
