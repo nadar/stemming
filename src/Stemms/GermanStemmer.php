@@ -71,11 +71,11 @@ class GermanStemmer implements StemmerInterface
 
     private static function getStem($word)
     {
-        $word = self::step0a($word);
-        $word = self::step1($word);
-        $word = self::step2($word);
-        $word = self::step3($word);
-        $word = self::step0b($word);
+        $word = self::step0a((string) $word);
+        $word = self::step1((string) $word);
+        $word = self::step2((string) $word);
+        $word = self::step3((string) $word);
+        $word = self::step0b((string) $word);
 
         return $word;
     }
